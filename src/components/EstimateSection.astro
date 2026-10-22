@@ -6,9 +6,9 @@ interface Props {
 }
 const { heading = "What are you ready to renovate?" } = Astro.props;
 
-// Cloudflare's published test key (always passes) until the real one is set
-// as PUBLIC_TURNSTILE_SITE_KEY in the Worker's build variables.
-const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "1x00000000000000000000AA";
+// Phoenix Turnstile site key (public). Can be overridden with PUBLIC_TURNSTILE_SITE_KEY,
+// e.g. set to 1x00000000000000000000AA for local testing.
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "0x4AAAAAAFhT3QKgtUHJb6jE";
 ---
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
