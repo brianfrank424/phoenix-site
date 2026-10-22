@@ -46,7 +46,7 @@ const others = services.filter((s) => s.slug !== service.slug);
       <div class="wrap">
         <div class="section-head">
           <h2 class="display h2">Recent work</h2>
-          <a href="/projects/">See more</a>
+          <a href={`/projects/?service=${service.slug}`}>See all {service.name.toLowerCase()} photos</a>
         </div>
         <div class="scroll-row scroll-row--photos">
           {related.map((ph) => (

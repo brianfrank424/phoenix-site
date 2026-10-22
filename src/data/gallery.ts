@@ -36,13 +36,13 @@ export const gallery: Photo[] = [
 
   // Roofing, siding and windows
   { src: "/images/roofing-siding-blue.webp", alt: "Colonial home with new blue vinyl siding and roof", service: "roofing-siding-windows", featured: true },
-  { src: "/images/siding-exterior-2.webp", alt: "Two-story home with blue siding", service: "roofing-siding-windows" },
-  { src: "/images/siding-exterior.webp", alt: "Rear of a two-story home with blue siding and decks", service: "roofing-siding-windows" },
 
   // Decks, porches and outdoor living
   { src: "/images/double-covered-deck.webp", alt: "Two-story double covered deck", service: "decks-porches-outdoor-living", featured: true },
   { src: "/images/outdoor-fireplace.webp", alt: "Stone outdoor fireplace with paver patio", service: "decks-porches-outdoor-living", featured: true },
   { src: "/images/deck-steps-dusk.webp", alt: "Deck with wide curved steps at dusk", service: "decks-porches-outdoor-living", featured: true },
+  { src: "/images/siding-exterior-2.webp", alt: "Multi-level deck on the back of a two-story home", service: "decks-porches-outdoor-living" },
+  { src: "/images/siding-exterior.webp", alt: "Two-level deck with stairs down to the yard", service: "decks-porches-outdoor-living" },
   { src: "/images/double-covered-deck-2.webp", alt: "Double covered deck with white railings", service: "decks-porches-outdoor-living" },
   { src: "/images/two-story-deck.webp", alt: "Two-story deck on a sided home", service: "decks-porches-outdoor-living" },
   { src: "/images/covered-deck.webp", alt: "Covered deck with stairs and cable railing", service: "decks-porches-outdoor-living" },
