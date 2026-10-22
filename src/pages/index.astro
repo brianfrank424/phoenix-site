@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import EstimateSection from "../components/EstimateSection.astro";
 import { site } from "../data/site";
 import { services } from "../data/services";
-import { gallery } from "../data/gallery";
+import { featuredPhotos } from "../data/gallery";
 ---
 
 <BaseLayout
@@ -20,8 +20,8 @@ import { gallery } from "../data/gallery";
           finish, including the roofing and siding that often come with it.
         </p>
         <div class="hero-ctas">
-          <a class="btn btn--yellow" href="/contact">Request a free estimate</a>
-          <a class="btn btn--outline" href="/projects">See our work</a>
+          <a class="btn btn--yellow" href="/contact/">Request a free estimate</a>
+          <a class="btn btn--outline" href="/projects/">See our work</a>
         </div>
       </div>
       <div class="hero-photo">
@@ -38,13 +38,13 @@ import { gallery } from "../data/gallery";
       <div class="section-head">
         <div>
           <h2 class="display h2">What we do</h2>
-          <p class="lead">Interior remodels are the heart of what we do, with the exterior work a renovation often calls for.</p>
+          <p class="lead">From kitchens and baths to decks and roofs, we help you plan the design and our own crew builds it.</p>
         </div>
-        <a href="/services">All services</a>
+        <a href="/services/">All services</a>
       </div>
       <div class="scroll-row">
         {services.map((s) => (
-          <a class="card" href={`/services/${s.slug}`}>
+          <a class="card" href={`/services/${s.slug}/`}>
             <img src={s.image} alt={s.imageAlt} loading="lazy" />
             <div class="card-body">
               <h3>{s.name}</h3>
@@ -60,10 +60,10 @@ import { gallery } from "../data/gallery";
     <div class="wrap">
       <div class="section-head">
         <h2 class="display h2">Recent renovations</h2>
-        <a href="/projects">See more</a>
+        <a href="/projects/">See more</a>
       </div>
       <div class="scroll-row scroll-row--photos">
-        {gallery.slice(0, 4).map((ph) => (
+        {featuredPhotos.map((ph) => (
           <div><img src={ph.src} alt={ph.alt} loading="lazy" /></div>
         ))}
       </div>
@@ -76,7 +76,7 @@ import { gallery } from "../data/gallery";
         <h2>Investors and property owners</h2>
         <p>Everything we do for homeowners, we do for investors, with your goals for the property in mind.</p>
       </div>
-      <a class="btn btn--outline" href="/investors">Work with us</a>
+      <a class="btn btn--outline" href="/investors/">Work with us</a>
     </div>
   </section>
 

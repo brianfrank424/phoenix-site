@@ -5,27 +5,51 @@ import { services } from "../../data/services";
 import { site } from "../../data/site";
 ---
 
-<BaseLayout title="Services" description={`Remodeling and renovation services in ${site.area}: kitchens, baths, basements, whole-home renovations, roofing, siding and windows.`}>
+<BaseLayout title="Services" description={`Remodeling and renovation services in ${site.area}: kitchens and baths, living spaces and basements, whole-home renovations, decks and porches, roofing, siding and windows.`}>
   <section class="page-hero">
     <div class="wrap">
       <p class="eyebrow">{site.tagline}</p>
       <h1 class="display h1">Services</h1>
-      <p class="lead">Interior remodels are the heart of what we do, with the exterior work a renovation often calls for. Every job is done by our own crew.</p>
+      <p class="lead">From a kitchen refresh to a new deck or a whole-house renovation, we help you plan the design and our own crew builds it.</p>
     </div>
   </section>
   <div class="divider" aria-hidden="true"></div>
-  <section class="section">
-    <div class="wrap grid-cards">
-      {services.map((s) => (
-        <a class="card" href={`/services/${s.slug}`}>
-          <img src={s.image} alt={s.imageAlt} loading="lazy" />
-          <div class="card-body">
-            <h2 style="margin:0;font-size:22px;font-weight:600">{s.name}</h2>
-            <p>{s.summary}</p>
+
+  {services.map((s, i) => (
+    <section class={i % 2 === 1 ? "section section--warm" : "section"} id={s.slug}>
+      <div class={i % 2 === 1 ? "wrap service-row reverse" : "wrap service-row"}>
+        <img src={s.image} alt={s.imageAlt} loading={i === 0 ? "eager" : "lazy"} />
+        <div class="service-copy">
+          <h2 class="display h2">{s.name}</h2>
+          <p class="intro">{s.intro}</p>
+          <ul class="check-list">
+            {s.includes.map((item) => <li>{item}</li>)}
+          </ul>
+          <div class="design-note">
+            <h3>Help with the design</h3>
+            <p>{s.design}</p>
           </div>
-        </a>
-      ))}
-    </div>
-  </section>
+          <a class="more" href={`/services/${s.slug}/`}>More on {s.name.toLowerCase()}</a>
+        </div>
+      </div>
+    </section>
+  ))}
+
   <EstimateSection />
 </BaseLayout>
+
+<style>
+  .service-row { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
+  .service-row.reverse { flex-direction: row-reverse; }
+  .service-row > img { flex: 1 1 420px; min-width: 0; width: 100%; height: 440px; object-fit: cover; border-radius: 6px; }
+  .service-copy { flex: 1 1 420px; min-width: 0; }
+  .service-copy .h2 { margin-bottom: 16px; }
+  .intro { font-size: 19px; margin: 0 0 20px; }
+  .design-note { border-left: 4px solid var(--yellow); padding: 4px 0 4px 16px; margin: 24px 0; }
+  .design-note h3 { margin: 0 0 4px; font-size: 18px; }
+  .design-note p { margin: 0; color: var(--muted); }
+  .more { font-weight: 600; }
+  @media (max-width: 700px) {
+    .service-row > img { height: 260px; }
+  }
+</style>

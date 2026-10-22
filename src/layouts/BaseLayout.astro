@@ -23,9 +23,8 @@ const businessSchema = {
   url: site.url,
   logo: new URL("/favicon.svg", Astro.site).href,
   image: ogImage,
-  description: "Remodeling and renovation contractor serving Central New York: kitchens, baths, basements, whole-home renovations, roofing, siding and windows.",
+  description: "Remodeling and renovation contractor serving Central New York: kitchens and baths, living spaces and basements, whole-home renovations, decks and porches, roofing, siding and windows.",
   telephone: "+1-315-794-5119",
-  email: site.email,
   areaServed: site.towns.map((t) => ({ "@type": "City", name: `${t}, NY` })),
 };
 ---

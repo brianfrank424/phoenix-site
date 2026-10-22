@@ -21,7 +21,7 @@ const serviceName = (slug: string) => services.find((s) => s.slug === slug)?.nam
       {gallery.map((ph) => (
         <figure>
           <img src={ph.src} alt={ph.alt} loading="lazy" />
-          <figcaption><a href={`/services/${ph.service}`}>{serviceName(ph.service)}</a></figcaption>
+          {ph.service && <figcaption><a href={`/services/${ph.service}/`}>{serviceName(ph.service)}</a></figcaption>}
         </figure>
       ))}
     </div>
