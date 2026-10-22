@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import EstimateSection from "../components/EstimateSection.astro";
+import { site, townList } from "../data/site";
+---
+
+<BaseLayout title="About" description={`How ${site.name} got started, and the remodeling and renovation work we do across ${site.area}.`}>
+  <section class="page-hero">
+    <div class="wrap">
+      <h1 class="display h1">About Phoenix</h1>
+      <p class="lead">A remodeling and renovation contractor serving {site.area}.</p>
+    </div>
+  </section>
+  <div class="divider" aria-hidden="true"></div>
+  <section class="section">
+    <div class="wrap split">
+      <div class="prose">
+        <p>Phoenix Property Partners started out of a plan to flip houses. During some downtime we took on a few small projects for homeowners, and before long we were booked out for a year.</p>
+        <p>Today remodeling and renovation for homeowners is the heart of the business. Every job is done by our own crew, never subcontracted out.</p>
+        <p>We work across {site.area}, including {townList}.</p>
+      </div>
+      <img src="/images/living-room.webp" alt="Renovated living area with refinished hardwood floors" style="width:100%;height:420px;object-fit:cover;border-radius:6px" loading="lazy" />
+    </div>
+  </section>
+  <EstimateSection />
+</BaseLayout>

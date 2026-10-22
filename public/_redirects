@@ -1,0 +1,15 @@
+# Old WordPress URLs
+/homeowners/  /services  301
+/homeowners   /services  301
+/sellers/     /investors 301
+/sellers      /investors 301
+/buyers/      /projects  301
+/buyers       /projects  301
+/gallery/     /projects  301
+/gallery      /projects  301
+/faq/         /faq       301
+/contact/     /contact   301
+/investors/   /investors 301
+/privacy-policy/ /privacy 301
+/privacy-policy  /privacy 301
+/wp-content/* /          301

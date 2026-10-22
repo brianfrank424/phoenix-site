@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import EstimateSection from "../components/EstimateSection.astro";
+import { faqs } from "../data/faqs";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs
+    .filter((f) => !f.a.includes("["))
+    .map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+};
+---
+
+<BaseLayout title="FAQ" description="Common questions about remodeling and renovation projects with Phoenix Property Partners.">
+  <section class="page-hero">
+    <div class="wrap">
+      <h1 class="display h1">Common questions</h1>
+    </div>
+  </section>
+  <div class="divider" aria-hidden="true"></div>
+  <section class="section">
+    <div class="wrap faq">
+      {faqs.map((f, i) => (
+        <details open={i === 0}>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <EstimateSection />
+</BaseLayout>
+
+<style>
+  .faq { max-width: 860px; }
+  details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+  summary { font-weight: 600; font-size: 19px; cursor: pointer; }
+  details p { margin: 12px 0 0; color: var(--muted); }
+</style>

@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import EstimateSection from "../../components/EstimateSection.astro";
+import { services } from "../../data/services";
+import { site } from "../../data/site";
+---
+
+<BaseLayout title="Services" description={`Remodeling and renovation services in ${site.area}: kitchens, baths, basements, whole-home renovations, roofing, siding and windows.`}>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">{site.tagline}</p>
+      <h1 class="display h1">Services</h1>
+      <p class="lead">Interior remodels are the heart of what we do, with the exterior work a renovation often calls for. Every job is done by our own crew.</p>
+    </div>
+  </section>
+  <div class="divider" aria-hidden="true"></div>
+  <section class="section">
+    <div class="wrap grid-cards">
+      {services.map((s) => (
+        <a class="card" href={`/services/${s.slug}`}>
+          <img src={s.image} alt={s.imageAlt} loading="lazy" />
+          <div class="card-body">
+            <h2 style="margin:0;font-size:22px;font-weight:600">{s.name}</h2>
+            <p>{s.summary}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+  <EstimateSection />
+</BaseLayout>

@@ -1,0 +1,92 @@
+---
+import { site } from "../data/site";
+
+interface Props {
+  heading?: string;
+}
+const { heading = "What are you ready to renovate?" } = Astro.props;
+
+// Cloudflare's published test key (always passes) until the real one is set
+// as PUBLIC_TURNSTILE_SITE_KEY in the Worker's build variables.
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "1x00000000000000000000AA";
+---
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<section id="estimate" class="estimate">
+  <div class="wrap inner">
+    <div class="intro">
+      <h2 class="display title">{heading}</h2>
+      <p class="call">Call <a href={site.phoneHref}>{site.phone}</a> or send the form and we will get back to you.</p>
+      <p class="email">{site.email}</p>
+    </div>
+
+    <form id="estimate-form" class="form" novalidate>
+      <label>Name
+        <input type="text" name="name" required autocomplete="name" />
+      </label>
+      <label>Phone or email
+        <input type="text" name="contact" required autocomplete="email" />
+      </label>
+      <label>The project
+        <textarea name="message" rows="4" required></textarea>
+      </label>
+      <div class="cf-turnstile" data-sitekey={siteKey}></div>
+      <button type="submit" class="btn btn--dark">Send it</button>
+      <p id="estimate-status" class="status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("estimate-form") as HTMLFormElement | null;
+  const status = document.getElementById("estimate-status");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!status) return;
+
+    const payload = Object.fromEntries(new FormData(form).entries());
+    if (!payload.name || !payload.contact || !payload.message) {
+      status.textContent = "Please fill in all three fields.";
+      return;
+    }
+
+    status.textContent = "Sending...";
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error("Request failed");
+      status.textContent = "Thanks, we got it. We will be in touch soon.";
+      form.reset();
+    } catch {
+      status.textContent = "Something went wrong. Please call 315-794-5119 or email info@phxpropertypartners.com.";
+    }
+  });
+</script>
+
+<style>
+  .estimate { background: var(--yellow); color: var(--ink); }
+  .inner { display: flex; flex-wrap: wrap; gap: 48px; align-items: start; padding-block: 88px; }
+  .intro { flex: 1 1 420px; min-width: 0; }
+  .title { font-size: clamp(44px, 7vw, 80px); line-height: 0.95; margin-bottom: 20px; }
+  .call { margin: 0 0 8px; font-size: 20px; }
+  .call a { color: var(--ink); font-weight: 700; }
+  .email { margin: 0; }
+  .form { flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+  label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; }
+  input, textarea {
+    font: inherit; font-weight: 400; padding: 12px;
+    border: 2px solid var(--ink); background: #fff4e3; color: var(--ink);
+    border-radius: 0; min-height: 44px;
+  }
+  .btn { align-self: start; padding: 16px 30px; font-weight: 700; border-radius: 0; }
+  .status { margin: 0; min-height: 1.5em; font-weight: 600; }
+  @media (max-width: 700px) {
+    .inner { padding-block: 56px; }
+    .title { font-size: 44px; }
+  }
+</style>

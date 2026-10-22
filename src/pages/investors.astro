@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import EstimateSection from "../components/EstimateSection.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout title="Investors" description={`Renovation and development work for investors and property owners in ${site.area}.`}>
+  <section class="page-hero">
+    <div class="wrap">
+      <h1 class="display h1">Investors and property owners</h1>
+      <p class="lead">Everything we do for homeowners, we do for investors, with your goals for the property in mind.</p>
+    </div>
+  </section>
+  <div class="divider" aria-hidden="true"></div>
+  <section class="section">
+    <div class="wrap prose">
+      <p>Phoenix Property Partners began with a plan to buy and renovate houses, working with investors to fund the properties. That way of thinking still shapes how we work.</p>
+      <p>For investors and property owners, we take on the same work we do for homeowners: kitchens and baths, basements and living spaces, whole-home renovations, and roofing, siding and windows. The difference is the goal. We plan the work around what you want from the property.</p>
+      <p>We are also open to larger development projects with the right partners. If you are interested in investing, or you have a property you are thinking about selling, we are always open to the conversation.</p>
+    </div>
+  </section>
+  <EstimateSection heading="Tell us what you have in mind" />
+</BaseLayout>

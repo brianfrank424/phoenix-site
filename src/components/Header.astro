@@ -1,0 +1,83 @@
+---
+import { site } from "../data/site";
+
+const links = [
+  { href: "/services", label: "Services" },
+  { href: "/projects", label: "Projects" },
+  { href: "/about", label: "About" },
+  { href: "/faq", label: "FAQ" },
+];
+const path = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="/" class="logo" aria-label={`${site.name} home`}>
+      <img src="/brand/logo-horizontal-white.png" alt={site.name} width="674" height="162" />
+    </a>
+
+    <nav id="site-nav" class="nav" aria-label="Main">
+      {links.map((l) => (
+        <a href={l.href} aria-current={path.startsWith(l.href) ? "page" : undefined}>{l.label}</a>
+      ))}
+      <a class="nav-phone" href={site.phoneHref}>{site.phone}</a>
+    </nav>
+
+    <div class="actions">
+      <a class="phone desktop-only" href={site.phoneHref}>{site.phone}</a>
+      <a class="btn btn--yellow desktop-only" href="/contact">Request an estimate</a>
+      <a class="icon-btn icon-btn--yellow mobile-only" href={site.phoneHref} aria-label={`Call ${site.phone}`}>
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>
+      </a>
+      <button type="button" class="icon-btn mobile-only" id="menu-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("site-nav");
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    toggle.setAttribute("aria-label", open ? "Open menu" : "Close menu");
+    nav?.classList.toggle("is-open", !open);
+  });
+</script>
+
+<style>
+  .site-header { background: var(--ink); color: #fff; position: relative; z-index: 10; }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; padding-block: 16px; }
+  .logo img { height: 64px; width: auto; }
+  .nav { display: flex; gap: 8px 28px; font-weight: 500; font-size: 16px; }
+  .nav a { color: #fff; text-decoration: none; }
+  .nav a:hover, .nav a[aria-current="page"] { color: var(--yellow); }
+  .nav-phone { display: none; }
+  .actions { display: flex; align-items: center; gap: 12px 20px; }
+  .phone { color: #fff; text-decoration: none; font-weight: 600; }
+  .phone:hover { color: var(--yellow); }
+  .icon-btn {
+    width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 6px; border: 1.5px solid #555; background: transparent; color: #fff; cursor: pointer; padding: 0;
+  }
+  .icon-btn--yellow { background: var(--yellow); border-color: var(--yellow); color: var(--ink); }
+  .mobile-only { display: none; }
+
+  @media (max-width: 900px) {
+    .logo img { height: 40px; }
+    .desktop-only { display: none; }
+    .mobile-only { display: inline-flex; }
+    .nav {
+      display: none;
+      position: absolute; left: 0; right: 0; top: 100%;
+      flex-direction: column; gap: 0;
+      background: var(--ink); border-top: 1px solid #333;
+      padding: 8px var(--gutter) 20px;
+    }
+    .nav.is-open { display: flex; }
+    .nav a { padding: 14px 0; border-bottom: 1px solid #333; font-size: 18px; }
+    .nav-phone { display: block; color: var(--yellow) !important; font-weight: 600; border-bottom: 0 !important; }
+  }
+</style>

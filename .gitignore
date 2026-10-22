@@ -1,0 +1,20 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+
+# environment variables and local secrets
+.env
+.env.production
+.dev.vars
+
+# editor and OS files
+.DS_Store
+.idea/
+.wrangler/

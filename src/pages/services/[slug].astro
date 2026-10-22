@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import EstimateSection from "../../components/EstimateSection.astro";
+import { services, type Service } from "../../data/services";
+import { gallery } from "../../data/gallery";
+import { site } from "../../data/site";
+
+export function getStaticPaths() {
+  return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
+}
+
+const { service } = Astro.props as { service: Service };
+const related = gallery.filter((ph) => ph.service === service.slug);
+const others = services.filter((s) => s.slug !== service.slug);
+---
+
+<BaseLayout title={service.name} description={`${service.name} in ${site.area}. ${service.summary}`} image={service.image}>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow"><a href="/services" style="color:inherit;text-decoration:none">Services</a></p>
+      <h1 class="display h1">{service.name}</h1>
+      <p class="lead">{service.summary}</p>
+    </div>
+  </section>
+  <div class="divider" aria-hidden="true"></div>
+
+  <section class="section">
+    <div class="wrap split">
+      <div class="prose">
+        <p style="font-size:19px">{service.intro}</p>
+        <h2 class="display h2" style="font-size:32px;margin:32px 0 16px">What this covers</h2>
+        <ul class="check-list">
+          {service.includes.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <img src={service.image} alt={service.imageAlt} style="width:100%;height:440px;object-fit:cover;border-radius:6px" />
+    </div>
+  </section>
+
+  {related.length > 0 && (
+    <section class="section section--warm">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="display h2">Recent work</h2>
+          <a href="/projects">See more</a>
+        </div>
+        <div class="scroll-row scroll-row--photos">
+          {related.map((ph) => (
+            <div><img src={ph.src} alt={ph.alt} loading="lazy" /></div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="display h2" style="font-size:32px;margin-bottom:24px">Other services</h2>
+      <div class="scroll-row">
+        {others.map((s) => (
+          <a class="card" href={`/services/${s.slug}`}>
+            <img src={s.image} alt={s.imageAlt} loading="lazy" />
+            <div class="card-body"><h3>{s.name}</h3><p>{s.summary}</p></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <EstimateSection />
+</BaseLayout>

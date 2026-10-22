@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import EstimateSection from "../../components/EstimateSection.astro";
+import { gallery } from "../../data/gallery";
+import { services } from "../../data/services";
+import { site } from "../../data/site";
+
+const serviceName = (slug: string) => services.find((s) => s.slug === slug)?.name ?? "";
+---
+
+<BaseLayout title="Our work" description={`Remodeling and renovation work by ${site.name} across ${site.area}.`}>
+  <section class="page-hero">
+    <div class="wrap">
+      <h1 class="display h1">Our work</h1>
+      <p class="lead">A look at recent remodeling and renovation work across {site.area}.</p>
+    </div>
+  </section>
+  <div class="divider" aria-hidden="true"></div>
+  <section class="section">
+    <div class="wrap gallery">
+      {gallery.map((ph) => (
+        <figure>
+          <img src={ph.src} alt={ph.alt} loading="lazy" />
+          <figcaption><a href={`/services/${ph.service}`}>{serviceName(ph.service)}</a></figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+  <EstimateSection />
+</BaseLayout>
+
+<style>
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+  figure { margin: 0; }
+  figure img { width: 100%; height: 300px; object-fit: cover; border-radius: 6px; }
+  figcaption { margin-top: 10px; font-weight: 600; }
+  figcaption a { color: var(--ink); text-decoration: none; }
+  figcaption a:hover { color: var(--link); }
+</style>

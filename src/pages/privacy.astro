@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout title="Privacy policy" description={`Privacy policy for ${site.name}.`}>
+  <section class="page-hero">
+    <div class="wrap"><h1 class="display h1">Privacy policy</h1></div>
+  </section>
+  <section class="section">
+    <div class="wrap prose policy">
+      <p>Last updated October 2026.</p>
+
+      <h2>Who we are</h2>
+      <p>This website is run by {site.legalName}. Our address on the web is {site.url}.</p>
+
+      <h2>What we collect</h2>
+      <p>When you send the estimate form, we collect what you type into it: your name, your phone number or email address, and the details of your project. To block spam, the form is checked by Cloudflare Turnstile, which looks at technical information such as your IP address and browser.</p>
+      <p>We do not use advertising cookies or sell any information.</p>
+
+      <h2>How we use it</h2>
+      <p>We use what you send only to respond to your request and to follow up about your project.</p>
+
+      <h2>Who we share it with</h2>
+      <p>We do not share your information with third parties without your consent, except the services that run this site: Cloudflare hosts the site and checks the form for spam, and Resend delivers form messages to our inbox.</p>
+
+      <h2>How long we keep it</h2>
+      <p>Form messages are kept in our email for as long as they are useful for working with you.</p>
+
+      <h2>Your choices</h2>
+      <p>You can ask us to tell you what we hold about you or to delete it by emailing <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .policy h2 { font-size: 22px; margin: 32px 0 8px; }
+</style>
