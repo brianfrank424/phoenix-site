@@ -10,20 +10,28 @@ export const gallery: Photo[] = [
   // Kitchens and baths
   { src: "/images/kitchen-dark-cabinets-wide.webp", alt: "Kitchen with dark cabinets, island and tile backsplash", service: "kitchens-baths", featured: true },
   { src: "/images/kitchen-navy-cabinets.webp", alt: "Kitchen with navy cabinets and mosaic backsplash", service: "kitchens-baths", featured: true },
+  { src: "/images/kitchen-galley.webp", alt: "Galley kitchen with maple cabinets, black quartz counters and hexagon tile backsplash", service: "kitchens-baths" },
+  { src: "/images/kitchen-galley-2.webp", alt: "Galley kitchen with maple cabinets, wood-look plank floor and French door refrigerator", service: "kitchens-baths" },
+  { src: "/images/kitchen-white-quartz.webp", alt: "White kitchen with quartz island and geometric marble backsplash", service: "kitchens-baths" },
+  { src: "/images/kitchen-white-quartz-backsplash.webp", alt: "Geometric marble mosaic backsplash behind a gas cooktop", service: "kitchens-baths" },
   { src: "/images/kitchen-dark-cabinets.webp", alt: "L-shaped kitchen with dark cabinets and quartz counters", service: "kitchens-baths" },
   { src: "/images/kitchen-dark-cabinets-2.webp", alt: "Kitchen with dark cabinets and stainless appliances", service: "kitchens-baths" },
   { src: "/images/kitchen-navy-cabinets-2.webp", alt: "Navy kitchen cabinets with range and microwave", service: "kitchens-baths" },
   { src: "/images/kitchen-backsplash.webp", alt: "Cabinets and glass tile backsplash", service: "kitchens-baths" },
   { src: "/images/kitchen-white.webp", alt: "Kitchen with white cabinets and new flooring", service: "kitchens-baths" },
-  { src: "/images/shower-tile.webp", alt: "Tiled walk-in shower", service: "kitchens-baths" },
+  { src: "/images/shower-tile.webp", alt: "Walk-in shower with marble-look tile, hexagon floor and niche", service: "kitchens-baths" },
+  { src: "/images/bathroom-double-vanity.webp", alt: "Bathroom with oak double vanity, arched mirrors and hexagon floor tile", service: "kitchens-baths" },
+  { src: "/images/shower-marble-tile.webp", alt: "Marble-look shower with mosaic accent bands, body sprays and niche", service: "kitchens-baths" },
+  { src: "/images/shower-double.webp", alt: "Double walk-in shower in marble tile with herringbone floor and bench", service: "kitchens-baths" },
   { src: "/images/bathroom-vanity.webp", alt: "Bathroom with new vanity and lighting", service: "kitchens-baths" },
   { src: "/images/bathroom-tile.webp", alt: "Bathroom with tile floor and new vanity", service: "kitchens-baths" },
 
   // Living spaces and basements
   { src: "/images/open-kitchen-living.webp", alt: "Open kitchen and living area with hardwood floors", service: "living-spaces-basements", featured: true },
   { src: "/images/living-room.webp", alt: "Living room with refinished hardwood floors", service: "living-spaces-basements", featured: true },
+  { src: "/images/living-room-fireplace.webp", alt: "Living room with tiled fireplace wall, built-ins and new flooring", service: "living-spaces-basements" },
   { src: "/images/finished-attic.webp", alt: "Finished attic room with hardwood floors", service: "living-spaces-basements" },
-  { src: "/images/staircase.webp", alt: "Staircase with new railings and balusters", service: "living-spaces-basements" },
+  { src: "/images/staircase.webp", alt: "Staircase refinished with black treads, white risers and new railings", service: "living-spaces-basements" },
   { src: "/images/hardwood-living.webp", alt: "Hardwood floors in an open living area", service: "living-spaces-basements" },
   { src: "/images/living-room-2.webp", alt: "Living room opening to entry hall", service: "living-spaces-basements" },
   { src: "/images/dining-room.webp", alt: "Dining room with new floors and trim", service: "living-spaces-basements" },
@@ -44,9 +52,16 @@ export const gallery: Photo[] = [
   { src: "/images/siding-exterior-2.webp", alt: "Multi-level deck on the back of a two-story home", service: "decks-porches-outdoor-living" },
   { src: "/images/siding-exterior.webp", alt: "Two-level deck with stairs down to the yard", service: "decks-porches-outdoor-living" },
   { src: "/images/double-covered-deck-2.webp", alt: "Double covered deck with white railings", service: "decks-porches-outdoor-living" },
+  { src: "/images/double-covered-deck-3.webp", alt: "Two-story covered deck with white railings", service: "decks-porches-outdoor-living" },
   { src: "/images/two-story-deck.webp", alt: "Two-story deck on a sided home", service: "decks-porches-outdoor-living" },
   { src: "/images/covered-deck.webp", alt: "Covered deck with stairs and cable railing", service: "decks-porches-outdoor-living" },
   { src: "/images/covered-deck-2.webp", alt: "Covered deck with wide stairs", service: "decks-porches-outdoor-living" },
+  { src: "/images/covered-deck-cable-rail.webp", alt: "Covered deck with cable railing and painted skirting", service: "decks-porches-outdoor-living" },
+  { src: "/images/covered-deck-seating.webp", alt: "Covered deck seating area with tongue-and-groove ceiling", service: "decks-porches-outdoor-living" },
+  { src: "/images/covered-deck-ceiling.webp", alt: "Tongue-and-groove pine ceiling and fan on a covered deck", service: "decks-porches-outdoor-living" },
+  { src: "/images/covered-deck-side.webp", alt: "Side view of a covered deck with cable railing", service: "decks-porches-outdoor-living" },
+  { src: "/images/deck-privacy-screen.webp", alt: "Deck with horizontal slat privacy screen and built-in potting bench", service: "decks-porches-outdoor-living" },
+  { src: "/images/deck-new-boards.webp", alt: "New pressure-treated deck boards with picture-frame border", service: "decks-porches-outdoor-living" },
   { src: "/images/screened-porch.webp", alt: "Screened porch addition", service: "decks-porches-outdoor-living" },
   { src: "/images/porch-fireplace.webp", alt: "Stone fireplace on a covered porch", service: "decks-porches-outdoor-living" },
   { src: "/images/outdoor-fireplace-2.webp", alt: "Stacked stone outdoor fireplace and patio", service: "decks-porches-outdoor-living" },
@@ -58,3 +73,16 @@ export const gallery: Photo[] = [
 ];
 
 export const featuredPhotos = gallery.filter((p) => p.featured);
+
+export interface BeforeAfter {
+  title: string;
+  before: string;
+  after: string;
+  service?: string;
+}
+
+// Before and after pairs on the Our Work page.
+export const beforeAfter: BeforeAfter[] = [
+  { title: "Galley kitchen", before: "/images/kitchen-galley-before.webp", after: "/images/kitchen-galley.webp", service: "kitchens-baths" },
+  { title: "Staircase", before: "/images/staircase-before.webp", after: "/images/staircase.webp", service: "living-spaces-basements" },
+];

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import EstimateSection from "../../components/EstimateSection.astro";
-import { gallery } from "../../data/gallery";
+import { gallery, beforeAfter } from "../../data/gallery";
 import { services } from "../../data/services";
 import { site } from "../../data/site";
 
@@ -35,6 +35,28 @@ const filters = services
             <img src={ph.src} alt={ph.alt} loading="lazy" />
             {ph.service && <figcaption><a href={`/services/${ph.service}/`}>{serviceName(ph.service)}</a></figcaption>}
           </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section section--warm">
+    <div class="wrap">
+      <h2 class="display h2">Before and after</h2>
+      <div class="pairs">
+        {beforeAfter.map((pair) => (
+          <article class="pair">
+            <h3>{pair.service ? <a href={`/services/${pair.service}/`}>{pair.title}</a> : pair.title}</h3>
+            <div class="pair-images">
+              <figure>
+                <img src={pair.before} alt={`${pair.title} before the renovation`} loading="lazy" />
+                <figcaption class="tag">Before</figcaption>
+              </figure>
+              <figure>
+                <img src={pair.after} alt={`${pair.title} after the renovation`} loading="lazy" />
+                <figcaption class="tag tag--after">After</figcaption>
+              </figure>
+            </div>
+          </article>
         ))}
       </div>
     </div>
@@ -91,11 +113,27 @@ const filters = services
   figcaption { margin-top: 10px; font-weight: 600; }
   figcaption a { color: var(--ink); text-decoration: none; }
   figcaption a:hover { color: var(--link); }
+  .pairs { display: grid; gap: 40px; margin-top: 24px; }
+  .pair h3 { margin: 0 0 12px; font-size: 22px; }
+  .pair h3 a { color: var(--ink); text-decoration: none; }
+  .pair h3 a:hover { color: var(--link); }
+  .pair-images { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .pair-images figure { position: relative; }
+  .pair-images img { height: 380px; }
+  .tag {
+    position: absolute; top: 12px; left: 12px; margin: 0;
+    padding: 4px 12px; border-radius: 999px; font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    background: var(--ink); color: #fff;
+  }
+  .tag--after { background: var(--yellow); color: var(--ink); }
   .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   @media (max-width: 700px) {
     .filters { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(var(--gutter) * -1); padding: 0 var(--gutter) 8px; }
     .filters button { flex: 0 0 auto; }
     .gallery { grid-template-columns: 1fr; }
     figure img { height: 260px; }
+    .pair-images { grid-template-columns: 1fr; }
+    .pair-images img { height: 260px; }
   }
 </style>
